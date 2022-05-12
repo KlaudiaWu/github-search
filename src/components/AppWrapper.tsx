@@ -1,5 +1,5 @@
+import { ApolloProvider } from "@apollo/client";
 import React from "react";
-import { ApolloProvider } from "react-apollo";
 
 import { apolloClient } from "../services/apollo/apolloClient";
 

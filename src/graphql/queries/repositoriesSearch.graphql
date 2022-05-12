@@ -1,0 +1,35 @@
+query repositoriesSearch($query: String!, $type: SearchType!, $numOfResults: Int!, $nextPageCursor: String) {
+  search(type: $type, query: $query, first: $numOfResults, after: $nextPageCursor) {
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
+    nodes {
+      ... on Repository {
+        name
+        nameWithOwner
+        description
+        watchers {
+          totalCount
+        }
+        stargazers {
+          totalCount
+        }
+        languages(first: 100) {
+          nodes {
+            name
+          }
+        }
+        repositoryTopics(first: 100) {
+          nodes {
+            topic {
+              name
+            }
+          }
+        }
+        sshUrl
+        url
+      }
+    }
+  }
+}

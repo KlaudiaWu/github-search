@@ -1,0 +1,24 @@
+query usersSearch($query: String!, $type: SearchType!, $numOfResults: Int!, $nextPageCursor: String) {
+  search(type: $type, query: $query, first: $numOfResults, after: $nextPageCursor) {
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
+    userCount
+    nodes {
+      ... on User {
+        name
+        login
+        location
+        bio
+        url
+        followers {
+          totalCount
+        }
+        following {
+          totalCount
+        }
+      }
+    }
+  }
+}
