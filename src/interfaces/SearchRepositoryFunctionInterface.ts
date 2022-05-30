@@ -3,6 +3,6 @@ import { ApolloQueryResult } from "@apollo/client";
 import { SearchCollection } from "./SearchCollection";
 import { SearchQueryVariables } from "./SearchQueryVariables";
 
-export interface SearchRepositoryFunctionInterface<T extends SearchCollection> {
+export interface SearchRepositoryFunctionInterface<T> {
     (queryVariables?: SearchQueryVariables): Promise<ApolloQueryResult<T>>;
 }
