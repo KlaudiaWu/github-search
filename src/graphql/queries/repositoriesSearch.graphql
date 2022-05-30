@@ -4,6 +4,7 @@ query repositoriesSearch($query: String!, $type: SearchType!, $numOfResults: Int
       hasNextPage
       endCursor
     }
+    repositoryCount
     nodes {
       ... on Repository {
         name

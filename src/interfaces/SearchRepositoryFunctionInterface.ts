@@ -1,8 +1,8 @@
-import { ApolloQueryResult, ObservableQuery } from "@apollo/client";
+import { ApolloQueryResult } from "@apollo/client";
 
-import { Entity } from "./Entity";
+import { SearchCollection } from "./SearchCollection";
 import { SearchQueryVariables } from "./SearchQueryVariables";
 
-export interface SearchRepositoryFunctionInterface<T extends Entity> {
-    (queryVariables?: SearchQueryVariables): ApolloQueryResult<T>;
+export interface SearchRepositoryFunctionInterface<T extends SearchCollection> {
+    (queryVariables?: SearchQueryVariables): Promise<ApolloQueryResult<T>>;
 }
