@@ -1,7 +1,7 @@
 import { AppBar, Box, IconButton, Toolbar } from "@mui/material";
 
 import { ReactComponent as GitHubIcon } from '../../images/logo-github.svg';
-import { SearchField } from "../SearchField/SearchField";
+import { SearchFieldInput } from "../SearchFieldInput/SearchFieldInput";
 
 export function Header(): React.ReactElement {
     return (
@@ -11,7 +11,7 @@ export function Header(): React.ReactElement {
                     <IconButton size="large" edge="start" color="inherit" aria-label="Logo">
                         <GitHubIcon />
                     </IconButton>
-                    <SearchField />
+                    <SearchFieldInput />
                 </Toolbar>
             </AppBar>
         </Box>

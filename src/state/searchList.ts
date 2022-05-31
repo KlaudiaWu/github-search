@@ -2,6 +2,7 @@ import React from "react";
 import { BehaviorSubject } from "rxjs";
 import { SEARCH_RESULTS_PER_PAGE } from "../config/constants";
 import { SearchType } from "../graphql/generated/graphql";
+import { Entity } from "../interfaces/Entity";
 import { SearchQueryVariables } from "../interfaces/SearchQueryVariables";
 
 export function getDefaultQueryVariables(type?: SearchType): SearchQueryVariables {
@@ -29,6 +30,6 @@ export function getSearchListInitialState<T>({initialQueryVariables, type}: Crea
     };
 }
 
-export const SearchListContext: React.Context<SearchListStateInterface<any>> = React.createContext(
-    getSearchListInitialState<any>({})
+export const SearchListContext: React.Context<SearchListStateInterface<Entity>> = React.createContext(
+    getSearchListInitialState<Entity>({})
 );

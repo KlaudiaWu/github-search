@@ -1,10 +1,9 @@
+import { ApolloProvider } from "@apollo/client";
 import React from "react";
-import { Routes } from "../Routes";
-import { Header } from "./Header/Header";
+
+import { apolloClient } from "../services/apollo/apolloClient";
+import { SearchApp } from "./SearchApp";
 
 export function App(): React.ReactElement {
-    return <div>
-        <Header />
-        <Routes />
-    </div>;
+    return <ApolloProvider client={apolloClient}>{<SearchApp />}</ApolloProvider>;
 }

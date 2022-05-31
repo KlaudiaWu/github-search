@@ -1,5 +1,5 @@
 import { OutlinedInput } from "@mui/material";
 
-export function SearchField(): React.ReactElement {
+export function SearchFieldInput(): React.ReactElement {
     return  <OutlinedInput placeholder="Search" />;
 }
