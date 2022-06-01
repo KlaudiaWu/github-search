@@ -7,6 +7,7 @@ import { Header } from "./Header/Header";
 
 export function SearchApp(): React.ReactElement {
     const { searchAppState } = useSearchApp({});
+    
     return (
         <SearchAppProvider searchAppState={searchAppState}>
             <Header />
