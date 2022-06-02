@@ -2,32 +2,24 @@ import List from "@mui/material/List";
 import React from "react";
 import { useContext } from "react";
 
-import { Repository, SearchType, User } from "../../graphql/generated/graphql";
-
 import { useObservable } from "../../hooks/useObservable";
 import { Entity } from "../../interfaces/Entity";
 import { SearchListContext } from "../../state/searchList";
-import { RepositoryListItem } from "../RepositoryListItem/RepositoryListItem";
-import { UserListItem } from "../UserListItem/UserListItem";
 
-export interface SearchListItemsInterface {}
+export interface SearchListItemsInterface {
+    listElementTemplate: JSX.Element;
+}
 
-export function SearchListItems<T>({}: SearchListItemsInterface): React.ReactElement {
+export function SearchListItems<T>({ listElementTemplate }: SearchListItemsInterface): React.ReactElement {
     const { entities$ } = useContext(SearchListContext);
     const entities: Entity[] = useObservable(entities$);
 
-    function getItemByEntityType(entity: Entity) {
-        switch (entity.__typename) {
-            case "Repository": {
-                const repository = entity as Repository;
-                return <RepositoryListItem repository={repository} />;
-            }
-            case "User": {
-                const user = entity as User;
-                return <UserListItem user={user} />;
-            }
-        }
-    }
-
-    return <List>{entities.map((entity: Entity) => getItemByEntityType(entity))}</List>;
+    return (
+        <List>
+            {entities.map((entity: Entity) => (
+                // All of list items has to have "entity" prop to receive data
+                <listElementTemplate.type entity={entity} />
+            ))}
+        </List>
+    );
 }

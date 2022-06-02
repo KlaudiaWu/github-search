@@ -10,9 +10,10 @@ import { getDefaultQueryVariables, getSearchListInitialState, SearchListStateInt
 interface useSearchListPropsInterface<T extends SearchCollection> {
     repository: SearchRepositoryFunctionInterface<T>;
     type: SearchType;
+    searchInput: string;
 }
 
-export function useSearchList<T extends SearchCollection, K extends Entity>({type, repository}: useSearchListPropsInterface<T>) {
+export function useSearchList<T extends SearchCollection, K extends Entity>({type, repository, searchInput}: useSearchListPropsInterface<T>) {
     const [ searchListState ] = useState<SearchListStateInterface<K>>(getSearchListInitialState<K>({ initialQueryVariables: getDefaultQueryVariables(type), type}));
     const { queryVariables$, entities$ } = searchListState;
 

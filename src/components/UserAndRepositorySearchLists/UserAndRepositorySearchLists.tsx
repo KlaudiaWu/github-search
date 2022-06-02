@@ -1,22 +1,22 @@
 import { Box } from "@mui/material";
-import { ReactNode, useContext } from "react";
+import { ReactNode } from "react";
 
 import { SearchType } from "../../graphql/generated/graphql";
 
 import { getRepositoriesSearch } from "../../repositories/repositoriesSearch";
 import { getUsersSearch } from "../../repositories/usersSearch.ts";
-import { SearchAppContext } from "../../state/searchApp";
 import { RepositoryListItem } from "../RepositoryListItem/RepositoryListItem";
-import { SearchList } from "../SearchList/SearchList";
+import { SearchListsConfig, SearchListsWrapper } from "../SearchListsWrapper/SearchListsWrapper";
 import { UserListItem } from "../UserListItem/UserListItem";
 
-export function UserAndRepositorySearchLists(): ReactNode {
-    const { resultsTotalCount$ } = useContext(SearchAppContext);
+const listsConfig: SearchListsConfig = {
+    lists: [{ repository: getUsersSearch, type: SearchType.User, listElementTemplate: <UserListItem /> }, { repository: getRepositoriesSearch, type: SearchType.Repository, listElementTemplate: <RepositoryListItem /> }],
+};
 
+export function UserAndRepositorySearchLists(): ReactNode {
     return (
         <Box>
-            <SearchList repository={getRepositoriesSearch} type={SearchType.Repository} />
-            <SearchList repository={getUsersSearch} type={SearchType.User} />
+            <SearchListsWrapper searchListsConfig={listsConfig} />
         </Box>
     );
 }
