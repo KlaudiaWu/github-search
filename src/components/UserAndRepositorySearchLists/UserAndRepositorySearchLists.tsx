@@ -10,7 +10,10 @@ import { SearchListsConfig, SearchListsWrapper } from "../SearchListsWrapper/Sea
 import { UserListItem } from "../UserListItem/UserListItem";
 
 const listsConfig: SearchListsConfig = {
-    lists: [{ repository: getUsersSearch, type: SearchType.User, listElementTemplate: <UserListItem /> }, { repository: getRepositoriesSearch, type: SearchType.Repository, listElementTemplate: <RepositoryListItem /> }],
+    lists: [
+        { repository: getUsersSearch, type: SearchType.User, listElementTemplate: <UserListItem /> },
+        { repository: getRepositoriesSearch, type: SearchType.Repository, listElementTemplate: <RepositoryListItem /> },
+    ],
 };
 
 export function UserAndRepositorySearchLists(): ReactNode {
