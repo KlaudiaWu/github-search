@@ -3,6 +3,7 @@ import { Box, ListItemAvatar, Typography } from "@mui/material";
 import { Repository } from "../../graphql/generated/graphql";
 
 import { ListItem } from "../ListItem/ListItem";
+import { RepositoryUpdateDate } from "../RepositoryUpdateDate/RepositoryUpdateDate";
 
 export interface RepositoryListItemInterface {
     entity?: Repository;
@@ -23,7 +24,7 @@ export function RepositoryListItem({ entity }: RepositoryListItemInterface): JSX
                             <Typography>{entity.stargazers.totalCount}</Typography>
                             {entity.languages && entity.languages.nodes && entity.languages.nodes.length > 0 ? <Typography>{entity.languages.nodes[0]?.name} {entity.languages.nodes[0]?.color}</Typography>: null}
                             <Typography>{entity.licenseInfo?.name}</Typography>
-                            <Typography>{entity.updatedAt}</Typography>
+                            <RepositoryUpdateDate date={entity.updatedAt} />
                             {entity.issues ? <Typography>{entity.issues.totalCount}</Typography> : null}
                         </Box>
                     </Box>
