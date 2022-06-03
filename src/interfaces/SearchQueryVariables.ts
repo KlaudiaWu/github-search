@@ -1,3 +1,3 @@
-import { SearchRepositoriesQueryVariables, SearchUsersQueryVariables } from "../graphql/generated/graphql";
+import { RepositoriesSearchQueryVariables, UsersSearchQueryVariables } from "../graphql/generated/graphql";
 
-export type SearchQueryVariables = SearchUsersQueryVariables | SearchRepositoriesQueryVariables;
+export type SearchQueryVariables = UsersSearchQueryVariables | RepositoriesSearchQueryVariables;

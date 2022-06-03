@@ -1,7 +1,7 @@
 import { ApolloQueryResult } from "@apollo/client";
 import { BehaviorSubject } from "rxjs";
 
-import { SearchRepositoriesQuery, SearchUsersQuery } from "../graphql/generated/graphql";
+import { RepositoriesSearchQuery, UsersSearchQuery } from "../graphql/generated/graphql";
 import { Entity } from "../interfaces/Entity";
 import { SearchCollection } from "../interfaces/SearchCollection";
 import { SearchQueryVariables } from "../interfaces/SearchQueryVariables";

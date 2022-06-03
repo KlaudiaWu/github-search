@@ -21977,7 +21977,7 @@ export type WorkflowRunPendingDeploymentRequestsArgs = {
   last?: InputMaybe<Scalars['Int']>;
 };
 
-export type SearchRepositoriesQueryVariables = Exact<{
+export type RepositoriesSearchQueryVariables = Exact<{
   query: Scalars['String'];
   type: SearchType;
   numOfResults: Scalars['Int'];
@@ -21985,9 +21985,9 @@ export type SearchRepositoriesQueryVariables = Exact<{
 }>;
 
 
-export type SearchRepositoriesQuery = { __typename?: 'Query', search: { __typename?: 'SearchResultItemConnection', pageInfo: { __typename?: 'PageInfo', hasNextPage: boolean, endCursor?: string | null }, nodes?: Array<{ __typename?: 'App' } | { __typename?: 'Discussion' } | { __typename?: 'Issue' } | { __typename?: 'MarketplaceListing' } | { __typename?: 'Organization' } | { __typename?: 'PullRequest' } | { __typename?: 'Repository', name: string, nameWithOwner: string, description?: string | null, sshUrl: any, url: any, watchers: { __typename?: 'UserConnection', totalCount: number }, stargazers: { __typename?: 'StargazerConnection', totalCount: number }, languages?: { __typename?: 'LanguageConnection', nodes?: Array<{ __typename?: 'Language', name: string } | null> | null } | null, repositoryTopics: { __typename?: 'RepositoryTopicConnection', nodes?: Array<{ __typename?: 'RepositoryTopic', topic: { __typename?: 'Topic', name: string } } | null> | null } } | { __typename?: 'User' } | null> | null } };
+export type RepositoriesSearchQuery = { __typename?: 'Query', search: { __typename?: 'SearchResultItemConnection', repositoryCount: number, pageInfo: { __typename?: 'PageInfo', hasNextPage: boolean, endCursor?: string | null }, nodes?: Array<{ __typename?: 'App' } | { __typename?: 'Discussion' } | { __typename?: 'Issue' } | { __typename?: 'MarketplaceListing' } | { __typename?: 'Organization' } | { __typename?: 'PullRequest' } | { __typename?: 'Repository', name: string, nameWithOwner: string, description?: string | null, sshUrl: any, url: any, watchers: { __typename?: 'UserConnection', totalCount: number }, stargazers: { __typename?: 'StargazerConnection', totalCount: number }, languages?: { __typename?: 'LanguageConnection', nodes?: Array<{ __typename?: 'Language', name: string } | null> | null } | null, repositoryTopics: { __typename?: 'RepositoryTopicConnection', nodes?: Array<{ __typename?: 'RepositoryTopic', topic: { __typename?: 'Topic', name: string } } | null> | null } } | { __typename?: 'User' } | null> | null } };
 
-export type SearchUsersQueryVariables = Exact<{
+export type UsersSearchQueryVariables = Exact<{
   query: Scalars['String'];
   type: SearchType;
   numOfResults: Scalars['Int'];
@@ -21995,16 +21995,17 @@ export type SearchUsersQueryVariables = Exact<{
 }>;
 
 
-export type SearchUsersQuery = { __typename?: 'Query', search: { __typename?: 'SearchResultItemConnection', userCount: number, pageInfo: { __typename?: 'PageInfo', hasNextPage: boolean, endCursor?: string | null }, nodes?: Array<{ __typename?: 'App' } | { __typename?: 'Discussion' } | { __typename?: 'Issue' } | { __typename?: 'MarketplaceListing' } | { __typename?: 'Organization' } | { __typename?: 'PullRequest' } | { __typename?: 'Repository' } | { __typename?: 'User', name?: string | null, login: string, location?: string | null, bio?: string | null, url: any, followers: { __typename?: 'FollowerConnection', totalCount: number }, following: { __typename?: 'FollowingConnection', totalCount: number } } | null> | null } };
+export type UsersSearchQuery = { __typename?: 'Query', search: { __typename?: 'SearchResultItemConnection', userCount: number, pageInfo: { __typename?: 'PageInfo', hasNextPage: boolean, endCursor?: string | null }, nodes?: Array<{ __typename?: 'App' } | { __typename?: 'Discussion' } | { __typename?: 'Issue' } | { __typename?: 'MarketplaceListing' } | { __typename?: 'Organization' } | { __typename?: 'PullRequest' } | { __typename?: 'Repository' } | { __typename?: 'User', avatarUrl: any, name?: string | null, login: string, location?: string | null, bio?: string | null, url: any, followers: { __typename?: 'FollowerConnection', totalCount: number }, following: { __typename?: 'FollowingConnection', totalCount: number } } | null> | null } };
 
 
-export const SearchRepositoriesDocument = gql`
-    query searchRepositories($query: String!, $type: SearchType!, $numOfResults: Int!, $nextPageCursor: String) {
+export const RepositoriesSearchDocument = gql`
+    query repositoriesSearch($query: String!, $type: SearchType!, $numOfResults: Int!, $nextPageCursor: String) {
   search(type: $type, query: $query, first: $numOfResults, after: $nextPageCursor) {
     pageInfo {
       hasNextPage
       endCursor
     }
+    repositoryCount
     nodes {
       ... on Repository {
         name
@@ -22037,16 +22038,16 @@ export const SearchRepositoriesDocument = gql`
     `;
 
 /**
- * __useSearchRepositoriesQuery__
+ * __useRepositoriesSearchQuery__
  *
- * To run a query within a React component, call `useSearchRepositoriesQuery` and pass it any options that fit your needs.
- * When your component renders, `useSearchRepositoriesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useRepositoriesSearchQuery` and pass it any options that fit your needs.
+ * When your component renders, `useRepositoriesSearchQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useSearchRepositoriesQuery({
+ * const { data, loading, error } = useRepositoriesSearchQuery({
  *   variables: {
  *      query: // value for 'query'
  *      type: // value for 'type'
@@ -22055,19 +22056,19 @@ export const SearchRepositoriesDocument = gql`
  *   },
  * });
  */
-export function useSearchRepositoriesQuery(baseOptions: Apollo.QueryHookOptions<SearchRepositoriesQuery, SearchRepositoriesQueryVariables>) {
+export function useRepositoriesSearchQuery(baseOptions: Apollo.QueryHookOptions<RepositoriesSearchQuery, RepositoriesSearchQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<SearchRepositoriesQuery, SearchRepositoriesQueryVariables>(SearchRepositoriesDocument, options);
+        return Apollo.useQuery<RepositoriesSearchQuery, RepositoriesSearchQueryVariables>(RepositoriesSearchDocument, options);
       }
-export function useSearchRepositoriesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<SearchRepositoriesQuery, SearchRepositoriesQueryVariables>) {
+export function useRepositoriesSearchLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<RepositoriesSearchQuery, RepositoriesSearchQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<SearchRepositoriesQuery, SearchRepositoriesQueryVariables>(SearchRepositoriesDocument, options);
+          return Apollo.useLazyQuery<RepositoriesSearchQuery, RepositoriesSearchQueryVariables>(RepositoriesSearchDocument, options);
         }
-export type SearchRepositoriesQueryHookResult = ReturnType<typeof useSearchRepositoriesQuery>;
-export type SearchRepositoriesLazyQueryHookResult = ReturnType<typeof useSearchRepositoriesLazyQuery>;
-export type SearchRepositoriesQueryResult = Apollo.QueryResult<SearchRepositoriesQuery, SearchRepositoriesQueryVariables>;
-export const SearchUsersDocument = gql`
-    query searchUsers($query: String!, $type: SearchType!, $numOfResults: Int!, $nextPageCursor: String) {
+export type RepositoriesSearchQueryHookResult = ReturnType<typeof useRepositoriesSearchQuery>;
+export type RepositoriesSearchLazyQueryHookResult = ReturnType<typeof useRepositoriesSearchLazyQuery>;
+export type RepositoriesSearchQueryResult = Apollo.QueryResult<RepositoriesSearchQuery, RepositoriesSearchQueryVariables>;
+export const UsersSearchDocument = gql`
+    query usersSearch($query: String!, $type: SearchType!, $numOfResults: Int!, $nextPageCursor: String) {
   search(type: $type, query: $query, first: $numOfResults, after: $nextPageCursor) {
     pageInfo {
       hasNextPage
@@ -22076,6 +22077,7 @@ export const SearchUsersDocument = gql`
     userCount
     nodes {
       ... on User {
+        avatarUrl
         name
         login
         location
@@ -22094,16 +22096,16 @@ export const SearchUsersDocument = gql`
     `;
 
 /**
- * __useSearchUsersQuery__
+ * __useUsersSearchQuery__
  *
- * To run a query within a React component, call `useSearchUsersQuery` and pass it any options that fit your needs.
- * When your component renders, `useSearchUsersQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useUsersSearchQuery` and pass it any options that fit your needs.
+ * When your component renders, `useUsersSearchQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useSearchUsersQuery({
+ * const { data, loading, error } = useUsersSearchQuery({
  *   variables: {
  *      query: // value for 'query'
  *      type: // value for 'type'
@@ -22112,14 +22114,14 @@ export const SearchUsersDocument = gql`
  *   },
  * });
  */
-export function useSearchUsersQuery(baseOptions: Apollo.QueryHookOptions<SearchUsersQuery, SearchUsersQueryVariables>) {
+export function useUsersSearchQuery(baseOptions: Apollo.QueryHookOptions<UsersSearchQuery, UsersSearchQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<SearchUsersQuery, SearchUsersQueryVariables>(SearchUsersDocument, options);
+        return Apollo.useQuery<UsersSearchQuery, UsersSearchQueryVariables>(UsersSearchDocument, options);
       }
-export function useSearchUsersLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<SearchUsersQuery, SearchUsersQueryVariables>) {
+export function useUsersSearchLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<UsersSearchQuery, UsersSearchQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<SearchUsersQuery, SearchUsersQueryVariables>(SearchUsersDocument, options);
+          return Apollo.useLazyQuery<UsersSearchQuery, UsersSearchQueryVariables>(UsersSearchDocument, options);
         }
-export type SearchUsersQueryHookResult = ReturnType<typeof useSearchUsersQuery>;
-export type SearchUsersLazyQueryHookResult = ReturnType<typeof useSearchUsersLazyQuery>;
-export type SearchUsersQueryResult = Apollo.QueryResult<SearchUsersQuery, SearchUsersQueryVariables>;
+export type UsersSearchQueryHookResult = ReturnType<typeof useUsersSearchQuery>;
+export type UsersSearchLazyQueryHookResult = ReturnType<typeof useUsersSearchLazyQuery>;
+export type UsersSearchQueryResult = Apollo.QueryResult<UsersSearchQuery, UsersSearchQueryVariables>;

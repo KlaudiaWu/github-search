@@ -1,21 +1,18 @@
 import { ApolloQueryResult } from "@apollo/client";
 
 import {
-    Exact,
-    InputMaybe,
-    SearchRepositoriesDocument,
-    SearchRepositoriesQuery,
-    SearchRepositoriesQueryVariables,
-    SearchType,
+    RepositoriesSearchDocument,
+    RepositoriesSearchQuery,
+    RepositoriesSearchQueryVariables
 } from "../graphql/generated/graphql";
 import { apolloClient } from "../services/apollo/apolloClient";
 
 export async function getRepositoriesSearch(
-    queryVariables?: SearchRepositoriesQueryVariables
-): Promise<ApolloQueryResult<SearchRepositoriesQuery>> {
-    const result = await apolloClient.query<SearchRepositoriesQuery>({
-        query: SearchRepositoriesDocument,
-        variables: { queryVariables },
+    queryVariables?: RepositoriesSearchQueryVariables
+): Promise<ApolloQueryResult<RepositoriesSearchQuery>> {
+    const result = await apolloClient.query<RepositoriesSearchQuery>({
+        query: RepositoriesSearchDocument,
+        variables: { ...queryVariables },
     });
 
     return result;
