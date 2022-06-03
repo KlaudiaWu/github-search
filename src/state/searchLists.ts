@@ -3,7 +3,8 @@ import { BehaviorSubject } from "rxjs";
 
 export interface SearchListsStateInterface {
     resultsTotalCount$: BehaviorSubject<number>;
-    listsCounters$: BehaviorSubject<ListCounters[]>;
+    listCounter$: BehaviorSubject<ListCounters>; // Stream for single list counter
+    listsCounters$: BehaviorSubject<ListCounters>; // Stream for multiple lists counters from all subject info
 }
 
 export interface ListCounters {
@@ -13,7 +14,8 @@ export interface ListCounters {
 export function getSearchListsInitialState(): SearchListsStateInterface {
     return {
         resultsTotalCount$: new BehaviorSubject<number>(0),
-        listsCounters$: new BehaviorSubject<ListCounters[]>([])
+        listCounter$: new BehaviorSubject<ListCounters>({}),
+        listsCounters$: new BehaviorSubject<ListCounters>({})
     };
 }
 
