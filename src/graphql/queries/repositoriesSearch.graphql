@@ -16,6 +16,9 @@ query repositoriesSearch($query: String!, $type: SearchType!, $numOfResults: Int
                 stargazers {
                     totalCount
                 }
+                issues {
+                    totalCount
+                }
                 languages(first: 1) {
                     nodes {
                         name

@@ -10,7 +10,7 @@ export interface SearchListItemsInterface {
     listElementTemplate: JSX.Element;
 }
 
-export function SearchListItems<T>({ listElementTemplate }: SearchListItemsInterface): React.ReactElement {
+export function SearchListItems({ listElementTemplate }: SearchListItemsInterface): React.ReactElement {
     const { entities$ } = useContext(SearchListContext);
     const entities: Entity[] = useObservable(entities$);
 

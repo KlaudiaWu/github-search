@@ -5,7 +5,7 @@ import { SearchType } from "../../graphql/generated/graphql";
 
 import { getRepositoriesSearch } from "../../repositories/repositoriesSearch";
 import { getUsersSearch } from "../../repositories/usersSearch.ts";
-import { RepositoryListItem } from "../RepositoryListItem/RepositoryListItem";
+import { RepositoryListItem } from "../repository/RepositoryListItem/RepositoryListItem";
 import { SearchListsConfig, SearchListsWrapper } from "../SearchListsWrapper/SearchListsWrapper";
 import { UserListItem } from "../UserListItem/UserListItem";
 
