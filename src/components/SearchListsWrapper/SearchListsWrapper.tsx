@@ -23,13 +23,13 @@ interface SearchListsWrapperPropsInterface {
 
 export function SearchListsWrapper({ searchListsConfig }: SearchListsWrapperPropsInterface): JSX.Element {
     const { searchListsState } = useSearchLists({});
-    
+
     return (
         <SearchListsProvider searchListsState={searchListsState}>
             <SearchListsResultsCounter />
             {searchListsConfig.lists.map((listConfig: SearchListConfig) => (
                 <SearchList
-                key={listConfig.type}
+                    key={listConfig.type}
                     repository={listConfig.repository}
                     type={listConfig.type}
                     listElementTemplate={listConfig.listElementTemplate}

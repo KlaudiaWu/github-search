@@ -7,6 +7,7 @@ import { SearchCollection } from "../../interfaces/SearchCollection";
 import { SearchRepositoryFunctionInterface } from "../../interfaces/SearchRepositoryFunctionInterface";
 import { SearchListProvider } from "../../providers/SearchListProvider";
 import { SearchAppContext } from "../../state/searchApp";
+import { ListCounters, SearchListsContext } from "../../state/searchLists";
 import { SearchListItems } from "../SearchListItems/SearchListItems";
 
 export interface ListInterface<T extends SearchCollection> {
@@ -22,7 +23,9 @@ export function SearchList<T extends SearchCollection>({
 }: ListInterface<T>): React.ReactElement {
     const { searchInput$ } = useContext(SearchAppContext)
     const searchInput: string = useObservable(searchInput$);
-    const { searchListState } = useSearchList({ repository, type, searchInput });
+    const { listsCounters$ } = useContext(SearchListsContext);
+    const listsCounters: ListCounters[] = useObservable(listsCounters$);
+    const { searchListState } = useSearchList({ repository, type, searchInput, listsCounters });
 
     return (
         <SearchListProvider searchListState={searchListState}>

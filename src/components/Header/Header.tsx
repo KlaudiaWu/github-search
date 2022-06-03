@@ -6,7 +6,7 @@ import { SearchFieldInput } from "../SearchFieldInput/SearchFieldInput";
 export function Header(): React.ReactElement {
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static" elevation={0}>
+            <AppBar position="static" elevation={0} sx={{backgroundColor: "black"}}>
                 <Toolbar>
                     <IconButton size="large" edge="start" color="inherit" aria-label="Logo">
                         <GitHubIcon />
