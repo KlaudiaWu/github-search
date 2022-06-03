@@ -25,9 +25,13 @@ export function getSearchListData<T extends SearchCollection, K extends Entity>(
         if (value.data.search.nodes) {
             // @ts-ignore
             entities$.next(value.data.search.nodes);
-            listCounter$.next({...listCounter, [`${type}`]: value.data.search.totalCount});
-            
-            query$.next({ ...query });
+            listCounter$.next({[`${type}`]: value.data.search.totalCount});
         }
     });
+}
+
+export function changeSearchValueQueryVariable(searchInput$: BehaviorSubject<string>, queryVariables$: BehaviorSubject<SearchQueryVariables>) {
+    const searchInput = searchInput$.getValue();
+    const queryVariables = queryVariables$.getValue()
+    queryVariables$.next({...queryVariables, query: searchInput})
 }

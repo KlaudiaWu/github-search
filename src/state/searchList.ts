@@ -9,7 +9,7 @@ export function getDefaultQueryVariables(type?: SearchType): SearchQueryVariable
     return {
         numOfResults: SEARCH_RESULTS_PER_PAGE / 2,
         type: type ?? SearchType.User,
-        query: "a",
+        query: "",
     };
 }
 

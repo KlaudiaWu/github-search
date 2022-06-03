@@ -6,11 +6,11 @@ import { Routes } from "../Routes";
 import { Header } from "./Header/Header";
 
 export function SearchApp(): React.ReactElement {
-    const { searchAppState } = useSearchApp({});
+    const { searchAppState, searchChange } = useSearchApp({});
     
     return (
         <SearchAppProvider searchAppState={searchAppState}>
-            <Header />
+            <Header handleSearchChange={searchChange} />
             <Routes />
         </SearchAppProvider>
     );

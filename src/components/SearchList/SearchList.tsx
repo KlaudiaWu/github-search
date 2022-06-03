@@ -20,9 +20,7 @@ export function SearchList<T extends SearchCollection>({
     type,
     listElementTemplate
 }: ListInterface<T>): React.ReactElement {
-    const { searchInput$ } = useContext(SearchAppContext)
-    const searchInput: string = useObservable(searchInput$);
-    const { searchListState } = useSearchList({ repository, type, searchInput });
+    const { searchListState } = useSearchList({ repository, type });
 
     return (
         <SearchListProvider searchListState={searchListState}>

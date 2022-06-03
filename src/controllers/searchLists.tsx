@@ -6,10 +6,9 @@ export function mergeListsCounters(
     listCounter$: BehaviorSubject<ListCounters>,
     listsCounters$: BehaviorSubject<ListCounters>
 ): void {
-    const listCounterPrevValue = listCounter$.getValue();
+    const listCounterValue = listCounter$.getValue();
     const listsCounters = listsCounters$.getValue();
-    console.log(listCounterPrevValue, listsCounters)
-    listsCounters$.next({ ...listCounterPrevValue, ...listsCounters});
+    listsCounters$.next({ ...listsCounters, ...listCounterValue});
 }
 
 export function changeTotalCounter(listsCounters$: BehaviorSubject<ListCounters>, resultsTotalCount$: BehaviorSubject<number>): void {
