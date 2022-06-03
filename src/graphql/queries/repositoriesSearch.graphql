@@ -16,20 +16,17 @@ query repositoriesSearch($query: String!, $type: SearchType!, $numOfResults: Int
                 stargazers {
                     totalCount
                 }
-                languages(first: 100) {
+                languages(first: 1) {
                     nodes {
                         name
+                        color
                     }
                 }
-                repositoryTopics(first: 100) {
-                    nodes {
-                        topic {
-                            name
-                        }
-                    }
+                licenseInfo {
+                    name
                 }
-                sshUrl
                 url
+                updatedAt
             }
         }
     }

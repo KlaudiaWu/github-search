@@ -18,7 +18,7 @@ export function SearchListItems<T>({ listElementTemplate }: SearchListItemsInter
         <List>
             {entities.map((entity: Entity) => (
                 // All of list items has to have "entity" prop to receive data
-                <listElementTemplate.type entity={entity} />
+                <listElementTemplate.type entity={entity} key={entity.id} />
             ))}
         </List>
     );

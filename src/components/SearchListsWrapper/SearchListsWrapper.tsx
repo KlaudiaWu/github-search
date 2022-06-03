@@ -29,6 +29,7 @@ export function SearchListsWrapper({ searchListsConfig }: SearchListsWrapperProp
             <SearchListsResultsCounter />
             {searchListsConfig.lists.map((listConfig: SearchListConfig) => (
                 <SearchList
+                key={listConfig.type}
                     repository={listConfig.repository}
                     type={listConfig.type}
                     listElementTemplate={listConfig.listElementTemplate}
