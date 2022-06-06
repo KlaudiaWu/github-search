@@ -37,11 +37,7 @@ export function useSearchList<T extends SearchCollection, K extends Entity>({
 
     useEffect(() => {
         changeSearchValueQueryVariable(searchInput$, queryVariables$);
-
-        return () => {
-        
-        };
-    }, [searchInput]);
+    }, [queryVariables$, searchInput, searchInput$]);
 
     return {
         searchListState,

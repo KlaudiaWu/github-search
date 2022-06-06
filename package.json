@@ -16,6 +16,7 @@
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.3",
     "@types/react-router-dom": "^5.3.3",
+    "awesome-debounce-promise": "^2.1.0",
     "graphql": "^16.5.0",
     "moment": "^2.29.3",
     "react": "^18.1.0",
