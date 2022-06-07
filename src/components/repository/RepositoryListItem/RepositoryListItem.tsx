@@ -1,4 +1,4 @@
-import { Box, ListItemAvatar, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 
 import { Repository } from "../../../graphql/generated/graphql";
 
@@ -8,6 +8,17 @@ import { RepositoryIssueCount } from "../RepositoryIssueCount/RepositoryIssueCou
 import { StarsCount } from "../../StarsCount/StarsCount";
 import { RepositoryUpdateDate } from "../RepositoryUpdateDate/RepositoryUpdateDate";
 
+import {
+    LicenseStyles,
+    ListItemIconStyles,
+    RepositoryIconStyles,
+    RepositoryListItemDescriptionStyles,
+    RepositoryListItemInfoStyled,
+    RepositoryListItemNameStyles,
+    RepositoryListItemStyled,
+    RepositoryListItemTechnicalInfoStyled,
+} from "./repositoryLisItem.styles";
+
 export interface RepositoryListItemInterface {
     entity?: Repository;
 }
@@ -16,14 +27,18 @@ export function RepositoryListItem({ entity }: RepositoryListItemInterface): JSX
     return (
         <ListItem>
             {entity ? (
-                <Box>
+                <RepositoryListItemStyled>
                     <Box>
-                        <ListItemAvatar></ListItemAvatar>
+                        <ListItemIconStyles>
+                            <RepositoryIconStyles />
+                        </ListItemIconStyles>
                     </Box>
-                    <Box>
-                        <Typography>{entity.nameWithOwner}</Typography>
-                        {entity.description ? <Typography>{entity.description}</Typography> : null}
-                        <Box>
+                    <RepositoryListItemInfoStyled>
+                        <RepositoryListItemNameStyles variant="h4" color="action.active">
+                            {entity.nameWithOwner}
+                        </RepositoryListItemNameStyles>
+                        {entity.description ? <RepositoryListItemDescriptionStyles variant="body1" color="text.secondary">{entity.description}</RepositoryListItemDescriptionStyles> : null}
+                        <RepositoryListItemTechnicalInfoStyled>
                             {entity.stargazers && entity.stargazers.totalCount && entity.stargazers.totalCount > 0 ? (
                                 <StarsCount starsCount={entity.stargazers.totalCount} />
                             ) : null}
@@ -36,14 +51,18 @@ export function RepositoryListItem({ entity }: RepositoryListItemInterface): JSX
                                     color={entity.languages.nodes[0]?.color}
                                 />
                             ) : null}
-                            <Typography>{entity.licenseInfo?.name}</Typography>
+                            {entity.licenseInfo ? (
+                                <LicenseStyles variant="caption" color="text.secondary">
+                                    {entity.licenseInfo?.name}
+                                </LicenseStyles>
+                            ) : null}
                             <RepositoryUpdateDate date={entity.updatedAt} />
                             {entity.issues && entity.issues.totalCount && entity.issues.totalCount > 0 ? (
                                 <RepositoryIssueCount issuesCount={entity.issues.totalCount} />
                             ) : null}
-                        </Box>
-                    </Box>
-                </Box>
+                        </RepositoryListItemTechnicalInfoStyled>
+                    </RepositoryListItemInfoStyled>
+                </RepositoryListItemStyled>
             ) : null}
         </ListItem>
     );

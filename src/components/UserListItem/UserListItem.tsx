@@ -5,7 +5,15 @@ import { User } from "../../graphql/generated/graphql";
 
 import { ListItem } from "../ListItem/ListItem";
 
-import { AvatarStyled, BioStyled, ListItemAvatarStyled, LocationStyled, LoginStyled, UserListItemInfoStyled, UserListItemStyles } from "./userListItem.styles";
+import {
+    AvatarStyled,
+    BioStyled,
+    ListItemAvatarStyled,
+    LocationStyled,
+    LoginStyled,
+    UserListItemInfoStyled,
+    UserListItemStyles,
+} from "./userListItem.styles";
 
 export interface UserListItemInterface {
     // Name of entity props must be "entity", not "user", becouse of SearchListItems
@@ -24,22 +32,36 @@ export function UserListItem({ entity }: UserListItemInterface): JSX.Element {
     };
 
     return (
-        <ListItem>
-            {entity ? (
-                <UserListItemStyles onClick={handleUserClick}>
-                    <Box>
-                        <ListItemAvatarStyled>
-                            <AvatarStyled alt={`${entity.name} avatar`} src={entity.avatarUrl} />
-                        </ListItemAvatarStyled>
-                    </Box>
-                    <UserListItemInfoStyled>
-                        <Typography variant="h4" color="action.active">{entity.name ?? entity.login}</Typography>
-                        <LoginStyled variant="body1" color="text.secondary">{entity.login}</LoginStyled>
-                        {entity.bio ? <BioStyled variant="body2" color="text.primary">{entity.bio}</BioStyled> : null}
-                        {entity.location ? <LocationStyled variant="caption" color="text.secondary">{entity.location}</LocationStyled> : null}
-                    </UserListItemInfoStyled>
-                </UserListItemStyles>
+        <>
+            {entity && entity.id ? (
+                <ListItem>
+                    <UserListItemStyles onClick={handleUserClick}>
+                        <Box>
+                            <ListItemAvatarStyled>
+                                <AvatarStyled alt={`${entity.name} avatar`} src={entity.avatarUrl} />
+                            </ListItemAvatarStyled>
+                        </Box>
+                        <UserListItemInfoStyled>
+                            <Typography variant="h4" color="action.active">
+                                {entity.name ?? entity.login}
+                            </Typography>
+                            <LoginStyled variant="body1" color="text.secondary">
+                                {entity.login}
+                            </LoginStyled>
+                            {entity.bio ? (
+                                <BioStyled variant="body2" color="text.primary">
+                                    {entity.bio}
+                                </BioStyled>
+                            ) : null}
+                            {entity.location ? (
+                                <LocationStyled variant="caption" color="text.secondary">
+                                    {entity.location}
+                                </LocationStyled>
+                            ) : null}
+                        </UserListItemInfoStyled>
+                    </UserListItemStyles>
+                </ListItem>
             ) : null}
-        </ListItem>
+        </>
     );
 }

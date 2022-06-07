@@ -12,4 +12,5 @@ export const StarIconStyles = styled(StarIcon)(({ theme }) => ({
     width: 14,
     height: "auto",
     margin: 4,
+    marginLeft: 0
 }));

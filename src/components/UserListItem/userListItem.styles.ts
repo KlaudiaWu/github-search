@@ -4,6 +4,7 @@ export const UserListItemStyles = styled(Box)(({ theme }) => ({
     display: "flex",
     flexDirection: "row",
     alignItems: "start",
+    cursor: "pointer"
 }));
 
 export const ListItemAvatarStyled = styled(ListItemAvatar)(({ theme }) => ({

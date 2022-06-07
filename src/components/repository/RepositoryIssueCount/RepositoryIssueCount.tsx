@@ -1,5 +1,5 @@
-import { Typography } from "@mui/material";
+import { RepositoryIssueCountStyles } from "./repositoryIssueCount.styles";
 
 export function RepositoryIssueCount({ issuesCount }: { issuesCount: number }): JSX.Element {
-    return <Typography>{issuesCount} {issuesCount > 1 ? "issues" : "issue"} need help</Typography>;
+    return <RepositoryIssueCountStyles variant="caption" color="text.secondary">{issuesCount} {issuesCount > 1 ? "issues" : "issue"} need help</RepositoryIssueCountStyles>;
 }
