@@ -21995,7 +21995,7 @@ export type UsersSearchQueryVariables = Exact<{
 }>;
 
 
-export type UsersSearchQuery = { __typename?: 'Query', search: { __typename?: 'SearchResultItemConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasNextPage: boolean, endCursor?: string | null }, nodes?: Array<{ __typename?: 'App' } | { __typename?: 'Discussion' } | { __typename?: 'Issue' } | { __typename?: 'MarketplaceListing' } | { __typename?: 'Organization' } | { __typename?: 'PullRequest' } | { __typename?: 'Repository' } | { __typename?: 'User', avatarUrl: any, name?: string | null, login: string, location?: string | null, bio?: string | null, url: any, followers: { __typename?: 'FollowerConnection', totalCount: number }, following: { __typename?: 'FollowingConnection', totalCount: number } } | null> | null } };
+export type UsersSearchQuery = { __typename?: 'Query', search: { __typename?: 'SearchResultItemConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasNextPage: boolean, endCursor?: string | null }, nodes?: Array<{ __typename?: 'App' } | { __typename?: 'Discussion' } | { __typename?: 'Issue' } | { __typename?: 'MarketplaceListing' } | { __typename?: 'Organization' } | { __typename?: 'PullRequest' } | { __typename?: 'Repository' } | { __typename?: 'User', avatarUrl: any, name?: string | null, login: string, location?: string | null, bio?: string | null, url: any, id: string, followers: { __typename?: 'FollowerConnection', totalCount: number }, following: { __typename?: 'FollowingConnection', totalCount: number }, starredRepositories: { __typename?: 'StarredRepositoryConnection', totalCount: number } } | null> | null } };
 
 
 export const RepositoriesSearchDocument = gql`
@@ -22089,6 +22089,10 @@ export const UsersSearchDocument = gql`
         following {
           totalCount
         }
+        starredRepositories {
+          totalCount
+        }
+        id
       }
     }
   }

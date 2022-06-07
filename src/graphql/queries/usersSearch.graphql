@@ -13,13 +13,16 @@ query usersSearch($query: String!, $type: SearchType!, $numOfResults: Int!, $nex
                 location
                 bio
                 url
-
                 followers {
                     totalCount
                 }
                 following {
                     totalCount
                 }
+                starredRepositories {
+                    totalCount
+                }
+                id
             }
         }
     }

@@ -8,7 +8,7 @@ export function Header({handleSearchChange}: {handleSearchChange: ChangeEventHan
 }): React.ReactElement {
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static" elevation={0} sx={{backgroundColor: "black"}}>
+            <AppBar position="static" elevation={0} >
                 <Toolbar>
                     <IconButton size="large" edge="start" color="inherit" aria-label="Logo">
                         <GitHubIcon />

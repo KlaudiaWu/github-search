@@ -1,5 +1,4 @@
 import { Box } from "@mui/material";
-import { ReactNode } from "react";
 
 import { SearchType } from "../../graphql/generated/graphql";
 
@@ -16,7 +15,7 @@ const listsConfig: SearchListsConfig = {
     ],
 };
 
-export function UserAndRepositorySearchLists(): ReactNode {
+export function UserAndRepositorySearchLists(): JSX.Element {
     return (
         <Box>
             <SearchListsWrapper searchListsConfig={listsConfig} />

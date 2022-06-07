@@ -1,4 +1,6 @@
 import { Avatar, Box, ListItemAvatar, Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+
 
 import { User } from "../../graphql/generated/graphql";
 
@@ -12,17 +14,27 @@ export interface UserListItemInterface {
 }
 
 export function UserListItem({ entity }: UserListItemInterface): JSX.Element {
+    const navigate = useNavigate()
+    const handleUserClick = () => {
+        console.log("CLICK", entity)
+        if (entity) {
+            // history.push(`/user/${entity.id}`);
+            // return <Navigate to={`/user/${entity.id}`} />
+            navigate(`/user/${entity.id}`, {state: {entity: entity}})
+        }
+    };
+
     return (
         <ListItem>
             {entity ? (
-                <Box>
+                <Box onClick={handleUserClick}>
                     <Box>
                         <ListItemAvatar>
                             <Avatar alt={`${entity.name} avatar`} src={entity.avatarUrl} />
                         </ListItemAvatar>
                     </Box>
                     <Box>
-                        <Typography>{entity.name ?? entity.login}</Typography>
+                        <Typography variant="h1">{entity.name ?? entity.login}</Typography>
                         <Typography>{entity.login}</Typography>
                         {entity.bio ? <Typography>{entity.bio}</Typography> : null}
                         {entity.location ? <Typography>{entity.location}</Typography> : null}

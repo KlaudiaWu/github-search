@@ -5,7 +5,7 @@ import { Repository } from "../../../graphql/generated/graphql";
 import { ListItem } from "../../ListItem/ListItem";
 import { RepositoryLanguage } from "../ReposirotyLanguage/RepositoryLanguage";
 import { RepositoryIssueCount } from "../RepositoryIssueCount/RepositoryIssueCount";
-import { RepositoryStargazersCount } from "../RepositoryStargazersCount/RepositoryStargazersCount";
+import { StarsCount } from "../../StarsCount/StarsCount";
 import { RepositoryUpdateDate } from "../RepositoryUpdateDate/RepositoryUpdateDate";
 
 export interface RepositoryListItemInterface {
@@ -25,7 +25,7 @@ export function RepositoryListItem({ entity }: RepositoryListItemInterface): JSX
                         {entity.description ? <Typography>{entity.description}</Typography> : null}
                         <Box>
                             {entity.stargazers && entity.stargazers.totalCount && entity.stargazers.totalCount > 0 ? (
-                                <RepositoryStargazersCount stargazersCount={entity.stargazers.totalCount} />
+                                <StarsCount starsCount={entity.stargazers.totalCount} />
                             ) : null}
                             {entity.languages &&
                             entity.languages.nodes &&
