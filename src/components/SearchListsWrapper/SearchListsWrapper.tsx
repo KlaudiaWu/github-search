@@ -7,6 +7,8 @@ import { SearchListsProvider } from "../../providers/SearchListsProvider";
 import { SearchList } from "../SearchList/SearchList";
 import { SearchListsResultsCounter } from "../SearchListsResultsCounter/SearchListsResultsCounter";
 
+import { SearchListsWrapperStyles } from "./searchListsWrapper.styles";
+
 interface SearchListConfig {
     repository: SearchRepositoryFunctionInterface<SearchCollection>;
     type: SearchType;
@@ -25,16 +27,18 @@ export function SearchListsWrapper({ searchListsConfig }: SearchListsWrapperProp
     const { searchListsState } = useSearchLists({});
 
     return (
-        <SearchListsProvider searchListsState={searchListsState}>
-            <SearchListsResultsCounter />
-            {searchListsConfig.lists.map((listConfig: SearchListConfig) => (
-                <SearchList
-                    key={listConfig.type}
-                    repository={listConfig.repository}
-                    type={listConfig.type}
-                    listElementTemplate={listConfig.listElementTemplate}
-                />
-            ))}
-        </SearchListsProvider>
+        <SearchListsWrapperStyles>
+            <SearchListsProvider searchListsState={searchListsState}>
+                <SearchListsResultsCounter />
+                {searchListsConfig.lists.map((listConfig: SearchListConfig) => (
+                    <SearchList
+                        key={listConfig.type}
+                        repository={listConfig.repository}
+                        type={listConfig.type}
+                        listElementTemplate={listConfig.listElementTemplate}
+                    />
+                ))}
+            </SearchListsProvider>
+        </SearchListsWrapperStyles>
     );
 }

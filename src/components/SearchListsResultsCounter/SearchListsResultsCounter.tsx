@@ -1,9 +1,8 @@
-import { Box, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { useContext } from "react";
-import { numberWithCommas } from "../../helpers/numberWithCommas";
 
 import { useObservable } from "../../hooks/useObservable";
-
+import { numberWithCommas } from "../../helpers/numberWithCommas";
 import { SearchListsContext } from "../../state/searchLists";
 
 import { SearchListsResultsCounterStyles } from "./searchListsResultsCounter.styles";
