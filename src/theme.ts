@@ -29,7 +29,7 @@ export const theme: ThemeOptions = {
         },
         h2: {
             fontSize: 21,
-            lineHeight: 2,
+            lineHeight: 1.523,
             fontWeight: 500
         },
         h3: {

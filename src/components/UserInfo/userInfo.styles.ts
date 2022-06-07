@@ -3,6 +3,13 @@ import { Avatar, Box, styled, Typography } from "@mui/material";
 export const UserInfoStyles = styled(Box)(({ theme }) => ({
     display: "flex",
     flexDirection: "column",
+    alignItems: "center",
+    marginTop: 30,
+
+    [theme.breakpoints.up("md")]: {
+        marginTop: 45,
+
+    },
 }));
 
 export const UserInfoAvatarStyles = styled(Avatar)(({ theme }) => ({
