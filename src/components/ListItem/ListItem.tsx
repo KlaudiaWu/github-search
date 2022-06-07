@@ -1,4 +1,6 @@
-import { Box, Divider, ListItem as ListItemMui } from "@mui/material";
+import { Divider } from "@mui/material";
+
+import { ListItemChildStyles, ListItemStyles, ListItemWrapperStyles } from "./listItem.styles";
 
 interface ListItemInterface {
     children: React.ReactNode;
@@ -6,11 +8,11 @@ interface ListItemInterface {
 
 export function ListItem({ children }: ListItemInterface) {
     return (
-        <ListItemMui>
-            <Box>
+        <ListItemStyles>
+            <ListItemWrapperStyles>
                 <Divider />
-                {children}
-            </Box>
-        </ListItemMui>
+                <ListItemChildStyles>{children}</ListItemChildStyles>
+            </ListItemWrapperStyles>
+        </ListItemStyles>
     );
 }
