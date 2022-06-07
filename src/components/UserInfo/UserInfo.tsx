@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { useLocation } from "react-router";
 
 import { User } from "../../graphql/generated/graphql";
