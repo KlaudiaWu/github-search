@@ -33,5 +33,6 @@ export function getSearchListData<T extends SearchCollection, K extends Entity>(
 export function changeSearchValueQueryVariable(searchInput$: BehaviorSubject<string>, queryVariables$: BehaviorSubject<SearchQueryVariables>) {
     const searchInput = searchInput$.getValue();
     const queryVariables = queryVariables$.getValue()
-    queryVariables$.next({...queryVariables, query: searchInput})
+    // Sort is hardcoded, but I think that with dynamic lists have to be one of query object variables
+    queryVariables$.next({...queryVariables, query: `${searchInput} sort:id-asc`})
 }
