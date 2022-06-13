@@ -4,8 +4,8 @@ import { SearchType } from "../../graphql/generated/graphql";
 
 import { getRepositoriesSearch } from "../../repositories/repositoriesSearch";
 import { getUsersSearch } from "../../repositories/usersSearch.ts";
-import { RepositoryListItem } from "../repository/RepositoryListItem/RepositoryListItem";
-import { SearchListsConfig, SearchListsWrapper } from "../SearchListsWrapper/SearchListsWrapper";
+import { RepositoryListItem } from "../RepositoryListItem/RepositoryListItem";
+import { SearchListsConfig, SearchLists } from "../SearchLists/SearchLists";
 import { UserListItem } from "../UserListItem/UserListItem";
 
 const listsConfig: SearchListsConfig = {
@@ -15,10 +15,10 @@ const listsConfig: SearchListsConfig = {
     ],
 };
 
-export function UserAndRepositorySearchLists(): JSX.Element {
+export function SearchListsPage(): JSX.Element {
     return (
         <Box>
-            <SearchListsWrapper searchListsConfig={listsConfig} />
+            <SearchLists searchListsConfig={listsConfig} />
         </Box>
     );
 }

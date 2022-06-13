@@ -6,6 +6,7 @@ interface ListItemInterface {
     children: React.ReactNode;
 }
 
+// Template for a list of items of all kinds. To be universal, it only has styles and divider
 export function ListItem({ children }: ListItemInterface) {
     return (
         <ListItemStyles>

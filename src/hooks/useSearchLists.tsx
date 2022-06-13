@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
+
 import { changeTotalCounter, mergeListsCounters } from "../controllers/searchLists";
 import { getSearchListsInitialState, ListCounters, SearchListsStateInterface } from "../state/searchLists";
 import { useObservable } from "./useObservable";
 
-interface useSearchListsPropsInterface {
-}
-
-export function useSearchLists({}: useSearchListsPropsInterface) {
+export function useSearchLists() {
     const [ searchListsState ] = useState<SearchListsStateInterface>(getSearchListsInitialState());
     const { listCounter$, listsCounters$, resultsTotalCount$ } = searchListsState;
     const listCounter: ListCounters = useObservable(listCounter$);

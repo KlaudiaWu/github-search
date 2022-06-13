@@ -3,7 +3,7 @@ import { useSearchList } from "../../hooks/useSearchList";
 import { SearchCollection } from "../../interfaces/SearchCollection";
 import { SearchRepositoryFunctionInterface } from "../../interfaces/SearchRepositoryFunctionInterface";
 import { SearchListProvider } from "../../providers/SearchListProvider";
-import { SearchListItems } from "../SearchListItems/SearchListItems";
+import { SearchListItems } from "./SearchListItems/SearchListItems";
 
 export interface ListInterface<T extends SearchCollection> {
     repository: SearchRepositoryFunctionInterface<T>;

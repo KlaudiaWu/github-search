@@ -21985,7 +21985,7 @@ export type RepositoriesSearchQueryVariables = Exact<{
 }>;
 
 
-export type RepositoriesSearchQuery = { __typename?: 'Query', search: { __typename?: 'SearchResultItemConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasNextPage: boolean, endCursor?: string | null }, nodes?: Array<{ __typename?: 'App' } | { __typename?: 'Discussion' } | { __typename?: 'Issue' } | { __typename?: 'MarketplaceListing' } | { __typename?: 'Organization' } | { __typename?: 'PullRequest' } | { __typename?: 'Repository', name: string, nameWithOwner: string, description?: string | null, url: any, updatedAt: any, watchers: { __typename?: 'UserConnection', totalCount: number }, stargazers: { __typename?: 'StargazerConnection', totalCount: number }, issues: { __typename?: 'IssueConnection', totalCount: number }, languages?: { __typename?: 'LanguageConnection', nodes?: Array<{ __typename?: 'Language', name: string, color?: string | null } | null> | null } | null, licenseInfo?: { __typename?: 'License', name: string } | null } | { __typename?: 'User' } | null> | null } };
+export type RepositoriesSearchQuery = { __typename?: 'Query', search: { __typename?: 'SearchResultItemConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasNextPage: boolean, endCursor?: string | null }, nodes?: Array<{ __typename?: 'App' } | { __typename?: 'Discussion' } | { __typename?: 'Issue' } | { __typename?: 'MarketplaceListing' } | { __typename?: 'Organization' } | { __typename?: 'PullRequest' } | { __typename?: 'Repository', name: string, nameWithOwner: string, description?: string | null, id: string, url: any, updatedAt: any, watchers: { __typename?: 'UserConnection', totalCount: number }, stargazers: { __typename?: 'StargazerConnection', totalCount: number }, issues: { __typename?: 'IssueConnection', totalCount: number }, languages?: { __typename?: 'LanguageConnection', nodes?: Array<{ __typename?: 'Language', name: string, color?: string | null } | null> | null } | null, licenseInfo?: { __typename?: 'License', name: string } | null } | { __typename?: 'User' } | null> | null } };
 
 export type UsersSearchQueryVariables = Exact<{
   query: Scalars['String'];
@@ -22017,6 +22017,7 @@ export const RepositoriesSearchDocument = gql`
         stargazers {
           totalCount
         }
+        id
         issues {
           totalCount
         }

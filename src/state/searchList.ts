@@ -1,7 +1,9 @@
 import React from "react";
 import { BehaviorSubject } from "rxjs";
-import { SEARCH_RESULTS_PER_PAGE } from "../config/constants";
+
 import { SearchType } from "../graphql/generated/graphql";
+
+import { SEARCH_RESULTS_PER_PAGE } from "../config/constants";
 import { Entity } from "../interfaces/Entity";
 import { SearchQueryVariables } from "../interfaces/SearchQueryVariables";
 

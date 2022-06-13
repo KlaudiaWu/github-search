@@ -16,6 +16,7 @@ query repositoriesSearch($query: String!, $type: SearchType!, $numOfResults: Int
                 stargazers {
                     totalCount
                 }
+                id
                 issues {
                     totalCount
                 }

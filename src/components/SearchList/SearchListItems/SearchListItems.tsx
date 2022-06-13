@@ -1,9 +1,9 @@
 import React from "react";
 import { useContext } from "react";
 
-import { useObservable } from "../../hooks/useObservable";
-import { Entity } from "../../interfaces/Entity";
-import { SearchListContext } from "../../state/searchList";
+import { useObservable } from "../../../hooks/useObservable";
+import { Entity } from "../../../interfaces/Entity";
+import { SearchListContext } from "../../../state/searchList";
 
 import { ListItemsWrapperStyles } from "./searchLListItems.styles";
 

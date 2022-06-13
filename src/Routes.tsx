@@ -1,13 +1,13 @@
 import { Routes as ReactRoutes, Route } from "react-router";
 
-import { UserAndRepositorySearchLists } from "./components/UserAndRepositorySearchLists/UserAndRepositorySearchLists";
-import { UserInfo } from "./components/UserInfo/UserInfo";
+import { SearchListsPage } from "./components/SearchListsPage/SearchListsPage";
+import { UserInfoPage } from "./components/UserInfoPage/UserInfoPage";
 
 export function Routes(): React.ReactElement {
     return (
         <ReactRoutes>
-            <Route path="/" element={ <UserAndRepositorySearchLists /> } />
-            <Route path="/user/:id" element={ <UserInfo /> } />
+            <Route path="/" element={<SearchListsPage />} />
+            <Route path="/user/:id" element={<UserInfoPage />} />
         </ReactRoutes>
-    )
+    );
 }

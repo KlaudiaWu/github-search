@@ -5,9 +5,9 @@ import { SearchCollection } from "../../interfaces/SearchCollection";
 import { SearchRepositoryFunctionInterface } from "../../interfaces/SearchRepositoryFunctionInterface";
 import { SearchListsProvider } from "../../providers/SearchListsProvider";
 import { SearchList } from "../SearchList/SearchList";
-import { SearchListsResultsCounter } from "../SearchListsResultsCounter/SearchListsResultsCounter";
+import { SearchListsResultsCounter } from "./SearchListsResultsCounter/SearchListsResultsCounter";
 
-import { SearchListsWrapperStyles } from "./searchListsWrapper.styles";
+import { SearchListsStyles } from "./searchLists.styles";
 
 interface SearchListConfig {
     repository: SearchRepositoryFunctionInterface<SearchCollection>;
@@ -23,11 +23,12 @@ interface SearchListsWrapperPropsInterface {
     searchListsConfig: SearchListsConfig;
 }
 
-export function SearchListsWrapper({ searchListsConfig }: SearchListsWrapperPropsInterface): JSX.Element {
-    const { searchListsState } = useSearchLists({});
+// This is wrapper component, that agregates all lists. 
+export function SearchLists({ searchListsConfig }: SearchListsWrapperPropsInterface): JSX.Element {
+    const { searchListsState } = useSearchLists();
 
     return (
-        <SearchListsWrapperStyles>
+        <SearchListsStyles>
             <SearchListsProvider searchListsState={searchListsState}>
                 <SearchListsResultsCounter />
                 {searchListsConfig.lists.map((listConfig: SearchListConfig) => (
@@ -39,6 +40,6 @@ export function SearchListsWrapper({ searchListsConfig }: SearchListsWrapperProp
                     />
                 ))}
             </SearchListsProvider>
-        </SearchListsWrapperStyles>
+        </SearchListsStyles>
     );
 }

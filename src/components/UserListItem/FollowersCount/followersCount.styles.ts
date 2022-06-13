@@ -1,6 +1,6 @@
 import { Box, styled } from "@mui/material";
 
-import { ReactComponent as FollowersIcon } from "../../images/followers.svg";
+import { ReactComponent as FollowersIcon } from "../../../images/followers.svg";
 
 export const FolloversCountStyles = styled(Box)(({ theme }) => ({
     display: "flex",

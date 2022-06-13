@@ -34,7 +34,7 @@ export function UserListItem({ entity }: UserListItemInterface): JSX.Element {
     return (
         <>
             {entity && entity.id ? (
-                <ListItem>
+                <ListItem key={entity.id}>
                     <UserListItemStyles onClick={handleUserClick}>
                         <Box>
                             <ListItemAvatarStyled>

@@ -1,6 +1,6 @@
 import { Box, ListItemIcon, styled, Typography } from "@mui/material";
 
-import { ReactComponent as RepositoryIcon } from "../../../images/repository.svg";
+import { ReactComponent as RepositoryIcon } from "../../images/repository.svg";
 
 export const RepositoryListItemStyled = styled(Box)(({ theme }) => ({
     display: "flex",

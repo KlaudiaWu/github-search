@@ -1,6 +1,6 @@
 import { Box, styled } from "@mui/material";
 
-export const SearchListsWrapperStyles = styled(Box)(({ theme }) => ({
+export const SearchListsStyles = styled(Box)(({ theme }) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "start",

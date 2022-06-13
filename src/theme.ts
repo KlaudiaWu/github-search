@@ -1,5 +1,6 @@
 import { ThemeOptions } from "@mui/material"
 
+// This is global theme, where we can define global style (like typography).
 export const theme: ThemeOptions = {
     palette: {
         common: {
@@ -57,8 +58,6 @@ export const theme: ThemeOptions = {
             lineHeight: 1,
             fontWeight: 500
         }
-        
-
 
     }
 }

@@ -2,7 +2,7 @@ import { Typography } from "@mui/material";
 import { useLocation } from "react-router";
 
 import { User } from "../../graphql/generated/graphql";
-import { FollowersCount } from "../FollowersCount/FollowersCount";
+import { FollowersCount } from "../UserListItem/FollowersCount/FollowersCount";
 import { StarsCount } from "../StarsCount/StarsCount";
 
 import { FollowingCountStyles, UserInfoAvatarStyles, UserInfoStatsStyles, UserInfoStyles } from "./userInfo.styles";
@@ -11,7 +11,7 @@ interface locationPropState {
     entity: User;
 }
 
-export function UserInfo(): JSX.Element {
+export function UserInfoPage(): JSX.Element {
     const location = useLocation();
     const { entity } = location.state as locationPropState;
 

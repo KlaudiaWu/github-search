@@ -1,14 +1,15 @@
 import { ApolloQueryResult } from "@apollo/client";
-import { BehaviorSubject, mergeMap } from "rxjs";
+import { BehaviorSubject } from "rxjs";
 
-import { RepositoriesSearchQuery, SearchType, UsersSearchQuery } from "../graphql/generated/graphql";
+import { SearchType } from "../graphql/generated/graphql";
+
 import { Entity } from "../interfaces/Entity";
 import { SearchCollection } from "../interfaces/SearchCollection";
 import { SearchQueryVariables } from "../interfaces/SearchQueryVariables";
 import { SearchRepositoryFunctionInterface } from "../interfaces/SearchRepositoryFunctionInterface";
-import { SearchListStateInterface } from "../state/searchList";
 import { ListCounters } from "../state/searchLists";
 
+// Here, I manage the stream with data for list, and query for data.
 export function getSearchListData<T extends SearchCollection, K extends Entity>(
     repository: SearchRepositoryFunctionInterface<T>,
     type: SearchType,
@@ -17,7 +18,6 @@ export function getSearchListData<T extends SearchCollection, K extends Entity>(
     listCounter$: BehaviorSubject<ListCounters>
 ): void {
     const query: SearchQueryVariables = query$.getValue();
-    const listCounter: ListCounters = listCounter$.getValue();
 
     const data: Promise<ApolloQueryResult<T>> = repository(query);
 
